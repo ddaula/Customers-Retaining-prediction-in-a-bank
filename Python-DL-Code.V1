@@ -43,7 +43,9 @@ from keras.models import Sequential
 from keras.layers import Dense
 classifier= Sequential()
 classifier.add(Dense(output_dim=6,init='uniform',activation='relu',input_dim=11)) #first layer
+classifier.add(Dropout(p=0.1))
 classifier.add(Dense(output_dim=6,init='uniform',activation='relu'))              #second layer
+classifier.add(Dropout(p=0.1))
 classifier.add(Dense(output_dim=1,init='uniform',activation='sigmoid'))           #output using sigmoid funtion to get an output b/w 0 or 1
 classifier.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])  #compile the NN
 classifier.fit(X_train,Y_train,batch_size=10,epochs=100) #feed the input in a batch size of 10(weights change per 10 inputs) and whole input set 100 times.
